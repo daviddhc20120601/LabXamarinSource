@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:helper="clr-namespace:AXVideo.Helpers"
+    xmlns:behavior="clr-namespace:AXVideo.Behaviors"
+    x:Class="AXVideo.Views.NewsPage"
+    BackgroundColor="{StaticResource BackgroundColor}"
+    Title="新闻">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="OneImageCell">
+                <ViewCell>
+                    <Grid
+                        RowSpacing="0"
+                        ColumnSpacing="0"
+                        BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="13"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="11"/>
+                        </Grid.ColumnDefinitions>
+                        <BoxView
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="{StaticResource BackgroundColor}"/>
+                        <Label 
+                            Grid.Row="2" 
+                            Grid.Column="1"
+                            FontSize="15"
+                            TextColor="{StaticResource TitleColor}"
+                            Text="{Binding TitleText}"/>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontSize="12"
+                            Margin="0,10,0,0"
+                            TextColor="{StaticResource SubTitleColor}"
+                            Text="{Binding DateText,Converter={StaticResource dateConverter}}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            CacheType="All" 
+                            Aspect="AspectFill"
+                            Margin="0,13"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True"
+                            ErrorPlaceholder="placeholder"
+                            Source="{Binding NewsImageUrl1}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="TwoImageCell">
+                <ViewCell>
+                    <Grid
+                        RowSpacing="0"
+                        ColumnSpacing="0"
+                        BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="13"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="11"/>
+                        </Grid.ColumnDefinitions>
+                        <BoxView
+                            Grid.ColumnSpan="5"
+                            BackgroundColor="{StaticResource BackgroundColor}"/>
+                        <Label 
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4"
+                            FontSize="15"
+                            TextColor="{StaticResource TitleColor}"
+                            Text="{Binding TitleText}"/>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4"
+                            FontSize="12"
+                            Margin="0,10,0,12"
+                            TextColor="{StaticResource SubTitleColor}"
+                            Text="{Binding DateText,Converter={StaticResource dateConverter}}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl1}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="3"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl2}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="ThreeImageCell">
+                <ViewCell>
+                    <Grid
+                        RowSpacing="0"
+                        ColumnSpacing="0"
+                        BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="13"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="11"/>
+                        </Grid.ColumnDefinitions>
+                        <BoxView
+                            Grid.ColumnSpan="7"
+                            BackgroundColor="{StaticResource BackgroundColor}"/>
+                        <Label 
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="6"
+                            FontSize="15"
+                            TextColor="{StaticResource TitleColor}"
+                            Text="{Binding TitleText}"/>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="6"
+                            FontSize="12"
+                            Margin="0,10,0,12"
+                            TextColor="{StaticResource SubTitleColor}"
+                            Text="{Binding DateText,Converter={StaticResource dateConverter}}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl1}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="3"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl2}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="5"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl3}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="TextCell">
+                <ViewCell>
+                    <Grid
+                        RowSpacing="0"
+                        ColumnSpacing="0"
+                        BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="13"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="11"/>
+                        </Grid.ColumnDefinitions>
+                        <BoxView
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="{StaticResource BackgroundColor}"/>
+                        <Label 
+                            Grid.Row="2" 
+                            Grid.Column="1"
+                            FontSize="15"
+                            TextColor="{StaticResource TitleColor}"
+                            Text="{Binding TitleText}"/>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontSize="12"
+                            Margin="0,10,0,12"
+                            TextColor="{StaticResource SubTitleColor}"
+                            Text="{Binding DateText,Converter={StaticResource dateConverter}}"/>
+                        <ffimageloading:CachedImage 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            CacheType="All" 
+                            Margin="0,13,0,0"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            DownsampleToViewSize="True" 
+                            Source="{Binding NewsImageUrl1}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <helper:NewsTemplateSelector 
+                x:Key="NewsTemplateSelector" 
+                OneImageTemplate="{StaticResource OneImageCell}" 
+                TwoImageTemplate="{StaticResource TwoImageCell}" 
+                ThreeImageTemplate="{StaticResource ThreeImageCell}"
+                TextTemplate="{StaticResource TextCell}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView
+        Margin="10,0"
+        HasUnevenRows="True"
+        SeparatorVisibility="None"
+        VerticalScrollBarVisibility="Never"
+        IsPullToRefreshEnabled="True"
+        IsRefreshing="{Binding IsRefreshing}"
+        RefreshCommand="{Binding RefreshCommand}"
+        ItemTemplate="{StaticResource NewsTemplateSelector}" 
+        SelectedItem="{Binding SelectedNewsItem, Mode=TwoWay}"
+        ItemsSource="{Binding NewsItems}" >
+        <ListView.Footer>
+            <ContentView 
+                HorizontalOptions="Center" 
+                Padding="0,10">
+                <Label 
+                    FontSize="13" 
+                    TextColor="{StaticResource SubTitleColor}" 
+                    Text="{Binding FooterLabel}" />
+            </ContentView>
+        </ListView.Footer>
+        <ListView.Behaviors>
+            <behavior:EventToCommandBehavior 
+                EventName="ItemSelected" 
+                Command="{Binding ToDetailCommand}"/>
+            <behavior:EventToCommandBehavior
+                EventName="ItemAppearing" 
+                Command="{Binding ItemAppearingCommand}" EventArgsParameterPath="Item"/>
+        </ListView.Behaviors>
+    </ListView>
+</ContentPage>

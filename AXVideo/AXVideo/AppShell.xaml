@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:AXVideo.Views"
+    x:Class="AXVideo.AppShell"
+    FlyoutBehavior="Disabled">
+    <Shell.Resources>
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="#2196F3" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.UnselectedColor" Value="#a2a2a2" />
+            <Setter Property="Shell.TabBarTitleColor" Value="#2196F3" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="White"/>
+        </Style>
+    </Shell.Resources>
+    <TabBar>
+        <ShellContent 
+            Route="video"
+            Title="视频"
+            Icon="video_normal"
+            Style="{StaticResource BaseStyle}"
+            ContentTemplate="{DataTemplate views:VideoPage}" />
+        <ShellContent 
+            Route="news"
+            Title="新闻"
+            Icon="news_normal"
+            Style="{StaticResource BaseStyle}"
+            ContentTemplate="{DataTemplate views:NewsPage}" />
+        <ShellContent 
+            Route="about"
+            Title="关于"
+            Icon="about_normal"
+            Style="{StaticResource BaseStyle}"
+            ContentTemplate="{DataTemplate views:AboutPage}" />
+    </TabBar>
+</Shell>
